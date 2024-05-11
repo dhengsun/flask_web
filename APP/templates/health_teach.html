@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康宣教</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平居中子元素 */
+    padding-top: 20px; /* 为顶部导航栏留出空间 */
+    height: 40%; /* 减去导航栏的高度 */
+        }
+        .lecture {
+            background-color: #f0f8ff;
+            color: #007bff;
+            border-left: 4px solid #007bff;
+            flex-grow: 1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px; /* 调整间距 */
+            width: 90%;
+    max-width: 600px; /* 根据需要调整最大宽度 */
+        }
+        .lecture h2 {
+            margin-top: 0;
+        }
+        .lecture img {
+            max-width: 300px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .image-section {
+            text-align: center;
+            padding: 20px;
+        }
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: linear-gradient(135deg, #ffffff, #e6f7ff);
+            color: #000000;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            padding: 20px;
+            transition: transform 0.2s ease;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        .card p {
+            margin-bottom: 10px;
+        }
+        .signup-button {
+            background-color: #fff;
+            color: #0077ff; /* 修改为蓝色 */
+            border: 2px solid #2981e0; /* 修改为蓝色 */
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .signup-button:hover {
+            background-color: #007bff; /* 修改为蓝色 */
+            color: #fff;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* 添加的推荐标题样式 */
+        .recommendation-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #027cfc; /* 修改为蓝色 */
+        }
+    </style>
+</head>
+<body>
+<div class ="container">
+    <div class="lecture">
+    <img src="../static/healthteach.jpeg" alt="健康讲座图片">
+    <div>
+        <h2>下期讲座预告</h2>
+        <p>主题：老年人如何保持健康的生活习惯</p>
+        <p>时间：2024.5.31</p>
+        <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+    </div>
+</div>
+</div>
+<!-- 添加的推荐标题 -->
+<div class="recommendation-title">其他讲座推荐:</div>
+
+<div class="card-container">
+    <div class="card">
+    <h3>饮食与免疫力</h3>
+    <p>主题：探讨饮食如何增强免疫力</p>
+        <p>时间：2024.4.30上午9点</p>
+        <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>运动与心脏健康</h3>
+    <p>主题：了解运动对心脏健康的重要性</p>
+    <p>时间：2024.5.2上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>睡眠与大脑功能</h3>
+    <p>主题：研究睡眠如何影响大脑功能</p>
+    <p>时间：2024.5.4下午2点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>心理健康与幸福</h3>
+    <p>主题：掌握提升心理健康的方法</p>
+    <p>时间：2024.5.5上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>预防医学讲座</h3>
+    <p>主题：了解定期体检的重要性</p>
+    <p>时间：2024.5.10下午3点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>营养与能量</h3>
+    <p>主题：发现合理的饮食如何提供持续的能量</p>
+    <p>时间：2024.5.26上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>徒步旅行的健康益处</h3>
+    <p>主题：了解徒步旅行对健康的积极影响</p>
+    <p>时间：2024.5.20下午2点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>深度睡眠的重要性</h3>
+    <p>主题：探讨深度睡眠对身心健康的益处</p>
+    <p>时间：2024.5.9上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>情绪管理与生活品质</h3>
+    <p>主题：学习有效的情绪管理技巧，提升生活品质</p>
+    <p>时间：2024.5.6上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>心血管健康与饮食</h3>
+    <p>主题：了解饮食如何影响心血管健康</p>
+    <p>时间：2024.5.14上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>呼吸与身体健康</h3>
+    <p>主题：了解正确的呼吸方式对身体健康的重要性</p>
+    <p>时间：2024.5.12上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>心理健康与人际关系</h3>
+    <p>主题：探讨心理健康如何影响人际关系</p>
+    <p>时间：2024.5.13上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>体重管理与健康</h3>
+    <p>主题：学习科学的体重管理方法，维护健康</p>
+    <p>时间：2024.5.23下午2点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+<div class="card">
+    <h3>营养与免疫系统</h3>
+    <p>主题：了解营养如何支持免疫系统</p>
+    <p>时间：2024.5.15上午9点</p>
+    <button class="signup-button" onclick="showSignUpMessage()">点我报名</button>
+</div>
+</div>
+
+<script>
+    function showSignUpMessage() {
+        alert('您已成功报名讲座！');
+    }
+</script>
+
+</body>
+</html>

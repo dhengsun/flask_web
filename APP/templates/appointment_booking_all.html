@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全部订单</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+    body, html {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background: #f9f9f9;
+    }
+    .header {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 2em;
+    }
+    .orders-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        max-width: 100%; /* 限制最大宽度为100% */
+    }
+    .order-card {
+        background: linear-gradient(135deg, #ffffff, #e6f7ff);
+        color: #007bff;
+        width: calc(50% - 20px); /* 设置宽度为容器宽度的50%减去间隔 */
+        margin: 10px;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+    .order-card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .order-card .order-info {
+        margin-bottom: 10px;
+    }
+    .order-card .order-info:last-child {
+        margin-bottom: 0;
+    }
+    .order-card h3 {
+        margin: 0;
+        font-size: 1.2em;
+    }
+    .order-card p {
+        margin: 5px 0;
+        font-size: 0.9em;
+    }
+    @media (max-width: 768px) {
+        .order-card {
+            width: calc(100% - 20px); /* 在小屏幕上卡片宽度为100% */
+            margin: 10px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="header">我的订单</div>
+    <div class="orders-container">
+        {% for item in user_order_info_list %}
+            <div class="order-card">
+                <div class="order-info">
+                    <h3>订单状态：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.status }}</p>
+                </div>
+                <div class="order-info">
+                    <h3>姓名：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.name }}</p>
+                </div>
+                <div class="order-info">
+                    <h3>地址：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.address }}</p>
+                </div>
+                <div class="order-info">
+                    <h3>费用：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.cost }}</p>
+                </div>
+                <div class="order-info">
+                    <h3>服务类别：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.servicetype }}</p>
+                </div>
+                <div class="order-info">
+                    <h3>联系电话：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.childphone }}</p>
+                </div>
+                <div class="order-info">
+                    <h3>支付方式：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.paymentMethod }}</p>
+                </div>
+                <div class="order-info">
+                    <h3>日期：</h3> <!-- 添加了冒号 -->
+                    <p>{{ item.date }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

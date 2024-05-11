@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康状况</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body, html {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff, #e6f7ff);
+        }
+        .nav {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .nav a.active {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            transform: translateY(-2px);
+        }
+     .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平居中子元素 */
+    padding-top: 60px; /* 为顶部导航栏留出空间 */
+    height: calc(100vh - 60px); /* 减去导航栏的高度 */
+        }
+        .welcome-card {
+            background-color: #f0f8ff;
+            color: #007bff;
+            border-left: 4px solid #007bff;
+            flex-grow: 1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px; /* 调整间距 */
+            width: 90%;
+    max-width: 600px; /* 根据需要调整最大宽度 */
+        }
+.button-panel {
+    display: flex;
+    flex-direction: row; /* 确保按钮是水平排列的 */
+ width: 100%;
+    justify-content: center;
+    margin-bottom: 20px; /* 调整按钮面板与健康矩阵之间的间距 */
+}
+
+.button {
+    padding: 10px 20px; /* 根据需要调整按钮的内边距 */
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    /* 增加按钮之间的间距 */
+    margin: 0 15px; /* 你可以根据需要调整这里的值 */
+}
+        .button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        .health-info-panel {
+            display: flex;
+            flex-direction: row; /* 修改为水平布局 */
+            justify-content: space-around; /* 左右两侧对齐 */
+            width: 100%;
+            height: calc(100% - 60px); /* 减去导航栏高度 */
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        .health-info-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 保持2x2布局 */
+            gap: 20px; /* 网格间距 */
+    width: 100%;
+    max-width: 1200px; /* 根据需要调整最大宽度 */
+        }
+        .health-info {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #e6f7ff, #ffffff);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .health-info h2 {
+            position: relative;
+            padding-left: 30px;
+        }
+        .health-info h2::before {
+            content: '\f21e'; /* 医疗十字图标 */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .health-info .value {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .status {
+            font-size: 14px;
+            padding: 5px;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+        .status.good {
+            background-color: #28a745;
+            color: white;
+        }
+        .status.warning {
+            background-color: #ffc107;
+            color: black;
+        }
+        .status.danger {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="appointment_booking">服务预约</a>
+        <a href="health_status" class="active">健康状况</a>
+        <a href="my_profile">我的</a>
+    </div>
+    <div class="container">
+        <div class="welcome-card">
+            <h1>欢迎回来，{{ health_info.name }}！</h1>
+            <p>年龄: {{ health_info.age }}</p>
+            <p>身高：{{ health_info.height }}cm</p>
+            <p>体重：{{ health_info.weight }}kg</p>
+            <p>疾病史：{{ health_info.DiseasesHistory }}</p>
+        </div>
+        <div class="button-panel">
+            <button class="button" onclick="remindToTakeMedicine()">吃药提醒</button>
+            <button class="button" onclick="showSignUpMessage()">健康评分</button>
+            <button class="button" onclick="location.href='/health_teach';">健康宣教</button>
+        </div>
+        <div class="health-info-panel">
+            <div class="health-info-matrix">
+                <!-- 健康信息矩阵内容 -->
+                <div id="bmi" class="health-info">
+                    <h2>BMI</h2>
+                    <div class="value">{{ health_info.BMI }}|参考范围：18.5~24.9</div>
+                    <div class="status"></div>
+                </div>
+                <div id="bloodGlucose" class="health-info">
+                    <h2>血糖</h2>
+                    <div class="value">{{ health_info.BloodGlucose }}|参考范围：3.9~6.1</div>
+                    <div class="status"></div>
+                </div>
+                <div id="bloodFat" class="health-info">
+                    <h2>血脂</h2>
+                    <div class="value">{{ health_info.BloodFat }}|参考范围：0.0~1.8</div>
+                    <div class="status"></div>
+                </div>
+                <div id="systolicPressure" class="health-info">
+                    <h2>血压</h2>
+                    <div class="value">{{ health_info.systolic_pressure }}/{{ health_info.diastolic_pressure }}|参考范围：[90, 120]</div>
+                    <div class="status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define the normal range and warning range for health indicators
+        const healthIndicators = {
+            bmi: { normal: [18.5, 24.9], warning: null },
+            bloodGlucose: { normal: [3.9, 6.1], warning: null },
+            bloodFat: { normal: [0.0, 1.8], warning: null },
+            systolicPressure: { normal: [90, 120], warning: [120, 139] }
+        };
+
+        function determineStatus(current, normal, warning) {
+            if (warning) {
+                if (current < normal[0] || current > normal[1]) {
+                    return 'danger';
+                } else if (current < warning[0] || current > warning[1]) {
+                    return 'warning';
+                }
+            } else {
+                // If there's no warning range
+                if (current < normal[0] || current > normal[1]) {
+                    return 'danger';
+                }
+            }
+            return 'good'; // If the current value is within the normal range
+        }
+
+        function updateHealthStatus() {
+            Object.keys(healthIndicators).forEach(indicator => {
+                const valueElement = document.querySelector(`#${indicator} .value`);
+                const statusElement = document.querySelector(`#${indicator} .status`);
+                const value = parseFloat(valueElement.textContent); // Convert to number directly
+                const { normal, warning } = healthIndicators[indicator];
+                const status = determineStatus(value, normal, warning);
+
+                statusElement.textContent = status; // Only display the status name
+                statusElement.className = `status ${status}`; // Set the status class name
+            });
+        }
+
+        // Automatically update health status when the document is loaded
+        document.addEventListener('DOMContentLoaded', updateHealthStatus);
+
+        function remindToTakeMedicine() {
+            alert("已通知护工提醒老人吃药！");
+        }
+        function showSignUpMessage() {
+        alert('您的健康评分为{{ health_info.score }}');
+    }
+    </script>
+</body>
+</html>

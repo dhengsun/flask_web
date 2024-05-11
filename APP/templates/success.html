@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <style>
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .container.welcome-text {
+            background-image: url('../static/success_src.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 50px;
+            color: #fff;
+            min-height: calc(100vh - 71px);
+            overflow: hidden;
+            position: relative; /* 为了使导航栏固定在上方 */
+        }
+        .container.welcome-text h1, .container.welcome-text p {
+            margin: 20px 0;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .ad-push {
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 50px; /* 底部留出空间，如果需要 */
+        }
+        .ad-push h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .ad-push p {
+            font-size: 1em;
+            line-height: 1.4;
+        }
+        .ad-push a {
+            text-decoration: none;
+            color: #00f;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 1px solid #00f;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .ad-push a:hover {
+            background-color: #00f;
+            color: #fff;
+            text-decoration: none;
+        }
+        /* 添加一些简单的图标，这里使用的是Font Awesome图标库 */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+        .icon {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="appointment_booking">服务预约</a>
+        <a href="health_status">健康状况</a>
+        <a href="my_profile">我的</a>
+    </div>
+    <div class="container welcome-text">
+        <i class="icon fas fa-calendar-plus"></i>
+        <h1>欢迎来到服务预约页面</h1>
+        <p>在这里，您可以预约服务和查看健康状况。</p>
+    </div>
+    <!-- 广告推送区域 -->
+    <div class="ad-push">
+        <h2>特别推荐</h2>
+        <p>查看我们最新的服务优惠，现在就预约您的专属服务！</p>
+        <a href="special_offer">立即预约</a>
+    </div>
+    <!-- 主页其他内容可以继续添加 -->
+</body>
+</html>

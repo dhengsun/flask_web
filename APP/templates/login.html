@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请登录</title>
+    <style>
+        body{
+            background-image: url('../static/index_src.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        /* 添加一个新类来创建一个Flexbox容器 */
+        .center-container {
+            display: flex; /* 使用Flexbox布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 容器高度为视口高度 */
+            min-height: 100vh; /* 确保至少为视口高度 */
+            padding: 20px; /* 容器内边距 */
+            box-sizing: border-box; /* 确保内边距包含在容器宽度内 */
+        }
+        .login-container {
+            width: 300px; /* 设置登录框的固定宽度 */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+        }
+        /* 其他样式保持不变 */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type=submit] {
+            width: 100%;
+            background-color: #007bff; /* 主题蓝色 */
+            color: white;
+            padding: 14px 20px;
+            margin: 10px 0; /* 增加边距 */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* 添加渐变效果 */
+        }
+        button[type=submit]:hover {
+            background-color: #0056b3; /* 鼠标悬停时颜色变深 */
+        }
+        .login-container label, .login-container a {
+            color: #333;
+            font-size: 14px;
+        }
+        .login-container a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff; /* 链接颜色与主题蓝色一致 */
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 使用新添加的类来包裹登录容器，实现居中显示 -->
+    <div class="center-container">
+        <div class="login-container">
+            <form action="/login" method="post">
+                <label for="username">用户名:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">密码:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">登录</button>
+                <!-- 登录提示 -->
+                <a href="/signup">忘记密码 ></a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
